@@ -100,9 +100,10 @@ function EntryBar(props) {
     }
 
     function renderHistory() {
+        console.log(history.length);
         return (<div className="History">
             {history.map((item, index) => <div className="HistoryItem">
-                <div className="Time">{formatTime(item.time)}</div><div className="Name">{item.name}</div><div>{index >= 1 ? getDuration(history[index - 1].time, item.time) : ''}</div>
+                <div className="Time">{formatTime(item.time)}</div><div className="Name">{item.name}</div><div>{index < history.length - 1 ? getDuration(item.time, history[index + 1].time) : ''}</div>
             </div>)}
         </div>
         );
