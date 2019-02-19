@@ -67,6 +67,10 @@ function EntryBar(props) {
         console.log(storedHistory);
         if (storedHistory) {
             setHistory(storedHistory);
+            for (let itemIndex in storedHistory) {
+                initialSuggestions.add(storedHistory[itemIndex].name);
+            }
+            console.log(initialSuggestions);
         }
     }, [])
 
