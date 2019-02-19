@@ -35,6 +35,11 @@ body {
     flex: 1;
   }
 
+  .History .Duration{
+      padding-right: 10pt;
+      width: 30px;
+  }
+
   button {
     background-color: #4CAF50; /* Green */
     border: none;

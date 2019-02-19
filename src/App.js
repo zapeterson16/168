@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import EntryBar from './EntryBar'
+import HomePage from './HomePage'
 
 function App(props) {
   return (
     <div className="App">
-      <EntryBar />
+      <HomePage />
     </div>
   );
 }

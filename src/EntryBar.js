@@ -1,16 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Autosuggest from 'react-autosuggest';
 import './EntryBar.css'
-// let initialSuggestions = [
-//     "Working",
-//     "Studying",
-//     "Illustrator",
-//     "Studying 250",
-//     "Eating",
-//     "Eating Lunch",
-//     "Eating Dinner",
-//     "Eating Breakfast"
-// ]
+
 
 let initialSuggestions = new Set(
     [
@@ -42,37 +33,17 @@ const renderSuggestion = suggestion => (
     </div>
 );
 
-function formatTime(dateString) {
-    let d = new Date(dateString);
-    return d.getHours().toString() + ":" + d.getMinutes().toString();
-}
-
-function getDuration(timeStartString, timeEndString) {
-    let startDate = new Date(timeStartString);
-    let endDate = new Date(timeEndString);
-    let duration = endDate - startDate;
-    console.log(duration.toString());
-    let durationInMs = parseInt(duration.toString());
-    let durationInMin = Math.floor(durationInMs / 60000);
-    return durationInMin;
-}
-
 function EntryBar(props) {
     const [eventVal, setEventVal] = useState('');
     const [suggestions, setSuggestions] = useState([]);
-    const [history, setHistory] = useState([]);
 
     useEffect(() => {
-        let storedHistory = JSON.parse(localStorage.getItem("History"));
-        console.log(storedHistory);
-        if (storedHistory) {
-            setHistory(storedHistory);
-            for (let itemIndex in storedHistory) {
-                initialSuggestions.add(storedHistory[itemIndex].name);
+        if (props.history) {
+            for (let itemIndex in props.history) { // Move to entry bar, pass history by props put in effect
+                initialSuggestions.add(props.history[itemIndex].name);
             }
-            console.log(initialSuggestions);
         }
-    }, [])
+    }, [props.history]);
 
     function onChange(event, { newValue }) {
         setEventVal(newValue);
@@ -86,52 +57,42 @@ function EntryBar(props) {
         setSuggestions([]);
     };
 
+    function onSuggestionSelected(event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }) {
+        submitEvent(suggestion);
+    }
+
+
     const inputProps = {
         placeholder: 'Type an event',
         value: eventVal,
         onChange: onChange
     };
 
-    function addSuggestion() {
-        initialSuggestions.add(eventVal);
+    function submitEvent(newEventVal) {
+        initialSuggestions.add(newEventVal);
 
         let d = new Date();
-        let newEvent = { time: d.toString(), name: eventVal }
-
+        let newEvent = { time: d.toString(), name: newEventVal }
+        console.log(newEvent);
         setEventVal('');
-        setHistory([...history, newEvent]);
-        localStorage.setItem("History", JSON.stringify([...history, newEvent]));
-    }
-
-    function renderHistory() {
-        console.log(history.length);
-        return (<div className="History">
-            {history.map((item, index) => <div className="HistoryItem">
-                <div className="Time">{formatTime(item.time)}</div><div className="Name">{item.name}</div><div>{index < history.length - 1 ? getDuration(item.time, history[index + 1].time) : ''}</div>
-            </div>)}
-        </div>
-        );
+        props.setHistory([...props.history, newEvent]);
+        localStorage.setItem("History", JSON.stringify([...props.history, newEvent]));
     }
 
     return (
-        <div>
-            <div className="topBar">
-                <div className="EntryBoxParent">
-                    <Autosuggest
-                        suggestions={suggestions}
-                        onSuggestionsFetchRequested={onSuggestionsFetchRequested}
-                        onSuggestionsClearRequested={onSuggestionsClearRequested}
-                        getSuggestionValue={getSuggestionValue}
-                        renderSuggestion={renderSuggestion}
-                        inputProps={inputProps}
-                        onSuggestionSelected={addSuggestion}
-                    />
-                </div>
-                <button onClick={addSuggestion}>go</button>
+        <div className="topBar">
+            <div className="EntryBoxParent">
+                <Autosuggest
+                    suggestions={suggestions}
+                    onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+                    onSuggestionsClearRequested={onSuggestionsClearRequested}
+                    getSuggestionValue={getSuggestionValue}
+                    renderSuggestion={renderSuggestion}
+                    inputProps={inputProps}
+                    onSuggestionSelected={onSuggestionSelected}
+                />
             </div>
-            <div>
-                {renderHistory()}
-            </div>
+            <button onClick={() => submitEvent(eventVal)}>go</button>
         </div>
     );
 }
