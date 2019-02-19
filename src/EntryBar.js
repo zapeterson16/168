@@ -47,6 +47,16 @@ function formatTime(dateString) {
     return d.getHours().toString() + ":" + d.getMinutes().toString();
 }
 
+function getDuration(timeStartString, timeEndString) {
+    let startDate = new Date(timeStartString);
+    let endDate = new Date(timeEndString);
+    let duration = endDate - startDate;
+    console.log(duration.toString());
+    let durationInMs = parseInt(duration.toString());
+    let durationInMin = Math.floor(durationInMs / 60000);
+    return durationInMin;
+}
+
 function EntryBar(props) {
     const [eventVal, setEventVal] = useState('');
     const [suggestions, setSuggestions] = useState([]);
@@ -91,8 +101,8 @@ function EntryBar(props) {
 
     function renderHistory() {
         return (<div className="History">
-            {history.map((item) => <div className="HistoryItem">
-                <div className="Time">{formatTime(item.time)}</div><div className="Name">{item.name}</div>
+            {history.map((item, index) => <div className="HistoryItem">
+                <div className="Time">{formatTime(item.time)}</div><div className="Name">{item.name}</div><div>{index >= 1 ? getDuration(history[index - 1].time, item.time) : ''}</div>
             </div>)}
         </div>
         );
