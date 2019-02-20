@@ -5,42 +5,14 @@ body {
   .topBar {
       display: flex;
       flex-direction: row;
-      align-items: top;
+      align-content: flex-end;
       padding-top: 10pt;
       padding-bottom: 10pt;
+      width: 100%;
 
   }
 
-  .History {
-      font-size: 1.5rem;
-  }
-
-  .HistoryItem{
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      border-top-width: 1px;
-      border-top-color: lightgray;
-      border-top-style: solid;
-  }
-
-  .HistoryItem .Time{
-      width: 65px;
-      text-align: right;
-  }
-
-  .History .Name{
-    padding: 5pt 5pt;
-    text-align: center;
-    flex: 1;
-  }
-
-  .History .Duration{
-      padding-right: 10pt;
-      width: 30px;
-  }
-
-  button {
+  .topBar button {
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
@@ -48,21 +20,22 @@ body {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    border-radius: 10px;
+    border-radius: 26px;
     height: 52px;
-    padding-right: 15px;
-    padding-left: 15px;
+    Width: 52px;
+
   }
 
-  .EntryBoxParent {
-    display: block;
-    flex-direction: column;
-    width: fit-content;
-    padding-right: 5pt;
+  .topBar .GoHolder {
+    padding-right: 15px;
   }
 
   .react-autosuggest__container {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
   }
   
   .react-autosuggest__input {
@@ -102,6 +75,7 @@ body {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     z-index: 2;
+    flex: 1;
   }
   
   .react-autosuggest__suggestions-list {

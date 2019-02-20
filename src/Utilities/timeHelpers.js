@@ -18,3 +18,16 @@ export function getDuration(timeStartString, timeEndString) {
     let durationInMin = Math.floor(durationInMs / 60000);
     return durationInMin;
 }
+
+export function getHistoryWithDuration(history) {
+
+    const HistoryWithDuration = history.map((value, index) => {
+        let duration = 0;
+        if (index !== history.length - 1) {
+            duration = getDuration(value.time, history[index + 1].time)
+        }
+        return { ...value, duration };
+    });
+
+    return HistoryWithDuration;
+}

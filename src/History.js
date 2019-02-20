@@ -1,6 +1,6 @@
 import React from 'react';
-import { formatTimeString, getDuration } from './Utilities/timeHelpers';
-import './EntryBar.css'
+import { formatTimeString, getHistoryWithDuration } from './Utilities/timeHelpers';
+import './History.css'
 
 function History(props) {
     function removeFromHistory(timeString) {
@@ -13,8 +13,8 @@ function History(props) {
     }
 
     return (<div className="History">
-        {props.history.map((item, index) => <div className="HistoryItem">
-            <div className="Time">{formatTimeString(item.time)}</div><div className="Name">{item.name}</div><div className="Duration">{index < props.history.length - 1 ? getDuration(item.time, props.history[index + 1].time) : ''}</div><button onClick={() => removeFromHistory(item.time)}>X</button>
+        {getHistoryWithDuration(props.history).reverse().map((item, index) => <div className="HistoryItem">
+            <div className="Time">{formatTimeString(item.time)}</div><div className="Name">{item.name}</div><div className="Duration">{item.duration}</div><button onClick={() => removeFromHistory(item.time)}>X</button>
         </div>)}
     </div>
     );

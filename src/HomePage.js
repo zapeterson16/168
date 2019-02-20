@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import History from './History';
 import EntryBar from './EntryBar';
+import TagSummary from './TagSummary';
 
 function HomePage(props) {
     const [history, setHistory] = useState([]);
@@ -16,6 +17,7 @@ function HomePage(props) {
         <div>
             <EntryBar history={history} setHistory={setHistory} />
             <History history={history} setHistory={setHistory} />
+            <TagSummary history={history} />
         </div>
     )
 }

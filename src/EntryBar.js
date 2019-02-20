@@ -81,18 +81,16 @@ function EntryBar(props) {
 
     return (
         <div className="topBar">
-            <div className="EntryBoxParent">
-                <Autosuggest
-                    suggestions={suggestions}
-                    onSuggestionsFetchRequested={onSuggestionsFetchRequested}
-                    onSuggestionsClearRequested={onSuggestionsClearRequested}
-                    getSuggestionValue={getSuggestionValue}
-                    renderSuggestion={renderSuggestion}
-                    inputProps={inputProps}
-                    onSuggestionSelected={onSuggestionSelected}
-                />
-            </div>
-            <button onClick={() => submitEvent(eventVal)}>go</button>
+            <Autosuggest
+                suggestions={suggestions}
+                onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+                onSuggestionsClearRequested={onSuggestionsClearRequested}
+                getSuggestionValue={getSuggestionValue}
+                renderSuggestion={renderSuggestion}
+                inputProps={inputProps}
+                onSuggestionSelected={onSuggestionSelected}
+            />
+            <div className="GoHolder"><button onClick={() => submitEvent(eventVal)}>go</button></div>
         </div>
     );
 }

@@ -1,0 +1,41 @@
+.History {
+    font-size: 1rem;
+}
+
+.HistoryItem{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-top-width: 1px;
+    border-top-color: lightgray;
+    border-top-style: solid;
+}
+
+.HistoryItem .Time{
+    width: 65px;
+    text-align: right;
+}
+
+.History .Name{
+  padding: 5pt 5pt;
+  text-align: center;
+  flex: 1;
+}
+
+.History .Duration{
+    padding-right: 10pt;
+    width: 30px;
+}
+
+.History button{
+    background-color: orangered;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 13px;
+    height: 26px;
+    width: 26px;
+}
