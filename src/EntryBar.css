@@ -28,6 +28,7 @@ body {
 
   .topBar .GoHolder {
     padding-right: 15px;
+    padding-left: 15px;
   }
 
   .react-autosuggest__container {
