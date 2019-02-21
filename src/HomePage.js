@@ -5,12 +5,12 @@ import TagSummary from './TagSummary';
 import Timeline from './Timeline/Timeline'
 
 const events = [
-    { ts: "2017-09-17T12:22:46.587Z", text: 'Logged in' },
-    { ts: "2017-09-17T12:21:46.587Z", text: 'Clicked Home Page' },
-    { ts: "2017-09-17T12:20:46.587Z", text: 'Edited Profile' },
-    { ts: "2017-09-16T12:22:46.587Z", text: 'Registred' },
-    { ts: "2017-09-16T12:21:46.587Z", text: 'Clicked Cart' },
-    { ts: "2017-09-16T12:20:46.587Z", text: 'Clicked Checkout' },
+    { ts: "2017-09-18T14:22:46.587", text: 'Logged in' },
+    { ts: "2017-09-18T19:21:46.587", text: 'Clicked Home Page' },
+    { ts: "2017-09-18T21:20:46.587", text: 'Edited Profile' },
+    { ts: "2017-09-16T22:22:46.587", text: 'Registred' },
+    { ts: "2017-09-16T22:21:46.587", text: 'Clicked Cart' },
+    { ts: "2017-09-16T22:20:46.587", text: 'Clicked Checkout' },
 ];
 
 function HomePage(props) {
@@ -25,10 +25,10 @@ function HomePage(props) {
 
     return (
         <div>
-            {/* <EntryBar history={history} setHistory={setHistory} />
+            <EntryBar history={history} setHistory={setHistory} />
             <History history={history} setHistory={setHistory} />
-            <TagSummary history={history} /> */}
-            <Timeline items={events} />
+            {/* <TagSummary history={history} /> */}
+            {/* <Timeline items={events} /> */}
 
         </div>
     )

@@ -1,6 +1,7 @@
 import React from 'react';
 import { formatTimeString, getHistoryWithDuration } from './Utilities/timeHelpers';
 import './History.css'
+import Timeline from './Timeline/Timeline'
 
 function History(props) {
     function removeFromHistory(timeString) {
@@ -13,9 +14,10 @@ function History(props) {
     }
 
     return (<div className="History">
-        {getHistoryWithDuration(props.history).reverse().map((item, index) => <div className="HistoryItem">
+        {/* {getHistoryWithDuration(props.history).reverse().map((item, index) => <div className="HistoryItem">
             <div className="Time">{formatTimeString(item.time)}</div><div className="Name">{item.name}</div><div className="Duration">{item.duration}</div><button onClick={() => removeFromHistory(item.time)}>X</button>
-        </div>)}
+        </div>)} */}
+        <Timeline history={getHistoryWithDuration(props.history)} setHistory={props.setHistory} />
     </div>
     );
 }

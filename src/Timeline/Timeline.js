@@ -1,35 +1,42 @@
 import moment from "moment";
 import React from "react";
-import PropTypes from "prop-types";
 import TimelineItem from "./TimelineItem";
 import './style.scss';
 
-/**
- * Converts array of events in to object having date as the key and list of
- * event for that date as the value
- *
- * @param {Array} items Array of events in the form of ts and text
- * @returns {Object} return object with key as date and values array in events for that date
- */
-function getFormattedData(items) {
-    const activities = {};
-    items.forEach(({ ts, text }, index) => {
-        const date = moment(ts);
-        const dateStr = date.format("DD MMM YYYY");
-        const list = activities[dateStr] || [];
-        list.push({
-            time: date.format("hh:mm"),
-            text,
-            key: index,
-        });
-        activities[dateStr] = list;
-    });
-    return activities;
-}
 
-function Timeline({ items }) {
-    const activities = getFormattedData(items);
+
+
+function Timeline({ history, setHistory }) {
+
+    function removeFromHistory(timeString) {
+        const index = history.findIndex(item => item.time === timeString);
+        history.splice(index, 1)
+        console.log(history);
+        setHistory([...history]);
+        localStorage.setItem("History", JSON.stringify(history));
+    }
+
+    function getFormattedData(items) {
+        const activities = {};
+        items.forEach(({ time, name, duration }, index) => {
+            const date = moment(time);
+            const dateStr = date.format("H:00");
+            const list = activities[dateStr] || [];
+            list.push({
+                time: date.format("hh:mm"),
+                name,
+                key: index,
+                duration: duration,
+                callDelete: (() => removeFromHistory(time)),
+            });
+            activities[dateStr] = list;
+        });
+        return activities;
+    }
+
+    const activities = getFormattedData(history);
     const dates = Object.keys(activities);
+    console.log(history);
     return (
         <div className="time-line-ctnr">
             {dates.map(d => (
@@ -37,22 +44,13 @@ function Timeline({ items }) {
                     <li className="time-label">
                         <span>{d}</span>
                     </li>
-                    {activities[d].map(({ time, text, key }) => (
-                        <TimelineItem time={time} text={text} key={key} />
+                    {activities[d].map(({ time, name, key, duration, callDelete }) => (
+                        <TimelineItem time={time} text={name} duration={duration} key={key} callDelete={callDelete} />
                     ))}
                 </ul>
             ))}
         </div>
     );
 }
-
-Timeline.propTypes = {
-    items: PropTypes.arrayOf(
-        PropTypes.shape({
-            ts: PropTypes.string.isRequired,
-            text: PropTypes.string.isRequired,
-        })
-    ).isRequired,
-};
 
 export default Timeline;

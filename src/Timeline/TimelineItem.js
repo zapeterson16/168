@@ -6,14 +6,14 @@ import './style.scss';
  * @usage
  * <TimlineItem time={time} text={text} />
  */
-function TimlineItem({ time, text }) {
+function TimlineItem({ time, text, duration, callDelete }) {
     return (
         <li>
-            <i className="fa" />
+            <i onClick={callDelete} className="fa" />
             <div className="time-line-item">
                 <span className="time">
                     <i className="fa fa-clock-o" />
-                    {time}
+                    {duration} min
                 </span>
                 <div className="time-line-header">{text}</div>
             </div>
