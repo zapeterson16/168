@@ -35,13 +35,14 @@ function Timeline({ history, setHistory }) {
     }
 
     function getUlClass(index, size) {
+        let className = "time-line";
         if (index === 0) {
-            return "time-line first";
+            className += " first";
         }
         if (index === size - 1) {
-            return "time-line last";
+            className += " last";
         }
-        return "time-line";
+        return className;
     }
 
     const activities = getFormattedData(history);

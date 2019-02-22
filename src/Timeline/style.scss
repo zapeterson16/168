@@ -6,16 +6,12 @@
       list-style: none;
       &.first{
             &:before {
-            border-top-left-radius: 2px;
-            border-top-right-radius: 2px;
-            top: 45px
+            top: 49.5px
             }
         }
         &.last{
             &:before {
-            border-bottom-left-radius: 2px;
-            border-bottom-right-radius: 2px;
-            bottom: 10px;
+            bottom: 13.5px;
             }
         }
       &:before {
@@ -47,7 +43,7 @@
         > .time-line-item {
         //   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
         //   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-          border-radius: 3px;
+        //   border-radius: 3px;
         //   background: #444;
         //   color: #444;
           margin-right: 15px;
