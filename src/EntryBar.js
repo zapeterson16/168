@@ -46,17 +46,6 @@ function EntryBar(props) {
         }
     }, [props.history]);
 
-    useEffect(
-        () => {
-            document.addEventListener("keydown", (e) => _handleKeyPress(e, getEventVal()))
-            return () => document.removeEventListener("keydown", _handleKeyPress)
-        },
-        []
-    );
-
-    function getEventVal() {
-        return eventVal;
-    }
     function onChange(event, { newValue }) {
         setEventVal(newValue);
         console.log("in on change");
@@ -92,25 +81,17 @@ function EntryBar(props) {
         localStorage.setItem("History", JSON.stringify([...props.history, newEvent]));
     }
 
-    function test() {
-        console.log("In Test")
-        console.log(eventVal);
-    }
-
-    function _handleKeyPress(e, test) {
-        console.log(test);
+    function _handleKeyPress(e, TextBoxVal) {
         if (e.key === 'Enter') {
             console.log("In handle keypress");
-            if (eventVal !== '') {
-                submitEvent(eventVal);
+            if (TextBoxVal !== '') {
+                submitEvent(TextBoxVal);
             }
-            console.log(eventVal.toString());
-            // test();
         }
     }
 
     return (
-        <div className="topBar">
+        <div className="topBar" onKeyPress={(e) => _handleKeyPress(e, eventVal)}>
             <Autosuggest
                 suggestions={suggestions}
                 onSuggestionsFetchRequested={onSuggestionsFetchRequested}
@@ -120,7 +101,6 @@ function EntryBar(props) {
                 inputProps={inputProps}
                 onSuggestionSelected={onSuggestionSelected}
             />
-            <div className="GoHolder"><button onClick={() => submitEvent(eventVal)}>go</button></div>
         </div>
     );
 }

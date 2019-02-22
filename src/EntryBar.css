@@ -12,20 +12,6 @@ body {
 
   }
 
-  .topBar button {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 26px;
-    height: 52px;
-    Width: 52px;
-
-  }
-
   .topBar .GoHolder {
     padding-right: 15px;
     padding-left: 15px;
@@ -37,6 +23,8 @@ body {
     flex-direction: column;
     flex: 1;
     align-items: center;
+    /* border-bottom: 1px solid #fff; */
+
   }
   
   .react-autosuggest__input {
@@ -46,17 +34,23 @@ body {
     font-family: Helvetica, sans-serif;
     font-weight: 300;
     font-size: 16px;
-    border: 1px solid #aaa;
+    background-color: #444;
+    border-style: none;
+    color: #eee;
     border-radius: 10px;
+    transition: background-color 0.25s ease;
+
   }
   
   .react-autosuggest__input--focused {
     outline: none;
+    background-color: #555;
   }
   
   .react-autosuggest__input--open {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+
   }
   
   .react-autosuggest__suggestions-container {
@@ -66,10 +60,12 @@ body {
   .react-autosuggest__suggestions-container--open {
     display: block;
     position: absolute;
-    top: 51px;
-    width: 70vw;
-    border: 1px solid #aaa;
-    background-color: #fff;
+    top: 50px;
+    width: 60vw;
+    padding: 0px 5vw;
+    background-color: #555;
+    color: #eee;
+    text-align: left;
     font-family: Helvetica, sans-serif;
     font-weight: 300;
     font-size: 16px;
@@ -87,7 +83,7 @@ body {
   
   .react-autosuggest__suggestion {
     cursor: pointer;
-    padding: 10px 20px;
+    padding: 10px 0px;
   }
   
   .react-autosuggest__suggestion--highlighted {
