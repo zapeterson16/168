@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Autosuggest from 'react-autosuggest';
 import './EntryBar.css'
+import { isConstructorDeclaration } from 'typescript';
 
 
 let initialSuggestions = new Set(
@@ -45,8 +46,20 @@ function EntryBar(props) {
         }
     }, [props.history]);
 
+    useEffect(
+        () => {
+            document.addEventListener("keydown", (e) => _handleKeyPress(e, getEventVal()))
+            return () => document.removeEventListener("keydown", _handleKeyPress)
+        },
+        []
+    );
+
+    function getEventVal() {
+        return eventVal;
+    }
     function onChange(event, { newValue }) {
         setEventVal(newValue);
+        console.log("in on change");
     }
 
     function onSuggestionsFetchRequested({ value }) {
@@ -77,6 +90,23 @@ function EntryBar(props) {
         setEventVal('');
         props.setHistory([...props.history, newEvent]);
         localStorage.setItem("History", JSON.stringify([...props.history, newEvent]));
+    }
+
+    function test() {
+        console.log("In Test")
+        console.log(eventVal);
+    }
+
+    function _handleKeyPress(e, test) {
+        console.log(test);
+        if (e.key === 'Enter') {
+            console.log("In handle keypress");
+            if (eventVal !== '') {
+                submitEvent(eventVal);
+            }
+            console.log(eventVal.toString());
+            // test();
+        }
     }
 
     return (

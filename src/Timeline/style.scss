@@ -10,7 +10,7 @@
         top: 0;
         bottom: -10px;
         width: 2px;
-        background: #3498db;
+        background: #555;
         left: 10px;
         border-radius: 2px;
       }
@@ -31,28 +31,29 @@
         margin-bottom: 10px;
         margin-right: 0;
         > .time-line-item {
-          -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+        //   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+        //   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
           border-radius: 3px;
-          background: #fff;
-          color: #444;
+        //   background: #444;
+        //   color: #444;
           margin-right: 15px;
           position: relative;
           margin-left: 28px;
           > .time-line-header,
           .time {
+              text-align: left;
             font-size: 14px;
             padding: 6px 10px;
           }
           .time {
             font-size: 12px;
-            color: #999;
+            color: #ddd;
             float: right;
           }
           .time-line-header {
             margin: 0;
-            color: #555;
-            border-bottom: 1px solid #f4f4f4;
+            color: #eee;
+            // border-bottom: 1px solid #f4f4f4;
             line-height: 1.1;
           }
         }

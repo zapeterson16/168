@@ -24,10 +24,10 @@ function HomePage(props) {
     }, []);
 
     return (
-        <div>
+        <div className="HomePage">
             <EntryBar history={history} setHistory={setHistory} />
             <History history={history} setHistory={setHistory} />
-            {/* <TagSummary history={history} /> */}
+            <TagSummary history={history} />
             {/* <Timeline items={events} /> */}
 
         </div>

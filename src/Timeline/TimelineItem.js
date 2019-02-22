@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import useLongPress from '../Utilities/LongPress';
 import './style.scss';
 
 /**
@@ -7,6 +8,8 @@ import './style.scss';
  * <TimlineItem time={time} text={text} />
  */
 function TimlineItem({ time, text, duration, callDelete }) {
+    const textLongPress = useLongPress(callDelete, 750);
+
     return (
         <li>
             <i onClick={callDelete} className="fa" />
@@ -15,7 +18,7 @@ function TimlineItem({ time, text, duration, callDelete }) {
                     <i className="fa fa-clock-o" />
                     {duration} min
                 </span>
-                <div className="time-line-header">{text}</div>
+                <div className="time-line-header" {...textLongPress}>{text}</div>
             </div>
         </li>
     );
