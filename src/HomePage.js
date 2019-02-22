@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import History from './History';
 import EntryBar from './EntryBar';
 import TagSummary from './TagSummary';
 import Timeline from './Timeline/Timeline'
+import { getHistoryWithDuration } from './Utilities/timeHelpers';
 
 const events = [
     { ts: "2017-09-18T14:22:46.587", text: 'Logged in' },
@@ -26,8 +26,8 @@ function HomePage(props) {
     return (
         <div className="HomePage">
             <EntryBar history={history} setHistory={setHistory} />
-            <History history={history} setHistory={setHistory} />
-            <TagSummary history={history} />
+            <Timeline history={getHistoryWithDuration(history)} setHistory={setHistory} />
+            {/* <TagSummary history={history} /> */}
             {/* <Timeline items={events} /> */}
 
         </div>

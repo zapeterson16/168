@@ -34,13 +34,23 @@ function Timeline({ history, setHistory }) {
         return activities;
     }
 
+    function getUlClass(index, size) {
+        if (index === 0) {
+            return "time-line first";
+        }
+        if (index === size - 1) {
+            return "time-line last";
+        }
+        return "time-line";
+    }
+
     const activities = getFormattedData(history);
     const dates = Object.keys(activities);
     console.log(history);
     return (
         <div className="time-line-ctnr">
-            {dates.map(d => (
-                <ul className="time-line" key={d}>
+            {dates.map((d, index) => (
+                <ul className={getUlClass(index, dates.length)} key={d}>
                     <li className="time-label">
                         <span>{d}</span>
                     </li>
