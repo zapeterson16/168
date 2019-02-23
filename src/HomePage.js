@@ -3,6 +3,7 @@ import EntryBar from './EntryBar';
 import TagSummary from './TagSummary';
 import Timeline from './Timeline/Timeline'
 import { getHistoryWithDuration } from './Utilities/timeHelpers';
+import "./HomePage.css";
 
 const events = [
     { ts: "2017-09-18T14:22:46.587", text: 'Logged in' },

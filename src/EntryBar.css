@@ -3,34 +3,23 @@ body {
   }
 
   .topBar {
-      display: flex;
-      flex-direction: row;
-      align-content: flex-end;
+      display: block;
       padding-top: 10pt;
       padding-bottom: 10pt;
-      width: 100%;
 
-  }
 
-  .topBar .GoHolder {
-    padding-right: 15px;
-    padding-left: 15px;
   }
 
   .react-autosuggest__container {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    align-items: center;
-    /* border-bottom: 1px solid #fff; */
 
   }
   
   .react-autosuggest__input {
-    width: 60vw;
+    width: 80vw;
+    max-width: 680px;
     height: 30px;
-    padding: 10px 5vw;
+    padding: 10px 10px;
     font-family: Helvetica, sans-serif;
     font-weight: 300;
     font-size: 16px;
@@ -58,11 +47,12 @@ body {
   }
   
   .react-autosuggest__suggestions-container--open {
+    width: 80vw;
+    max-width: 680px;
     display: block;
     position: absolute;
     top: 50px;
-    width: 60vw;
-    padding: 0px 5vw;
+    padding: 0px 10px;
     background-color: #555;
     color: #eee;
     text-align: left;
