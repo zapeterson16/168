@@ -3,7 +3,10 @@ body {
   }
 
   .topBar {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
       padding-top: 10pt;
       padding-bottom: 10pt;
 
