@@ -1,5 +1,5 @@
 import React from 'react';
-import { getDuration, getHistoryWithDuration } from './Utilities/timeHelpers';
+import { getHistoryWithDuration } from './Utilities/timeHelpers';
 
 function getTags(inputString) {
     const words = inputString.split(' ');

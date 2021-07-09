@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Autosuggest from 'react-autosuggest';
 import './EntryBar.css'
-import { isConstructorDeclaration } from 'typescript';
-
 
 let initialSuggestions = new Set(
     [

@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 
 export default function useLongPress(callback = () => { }, ms = 300) {
-    const [startLogPress, setStartLongPress] = useState(false);
+    const [startLongPress, setStartLongPress] = useState(false);
 
     useEffect(() => {
         let timerId;
-        if (startLogPress) {
+        if (startLongPress) {
             timerId = setTimeout(callback, ms);
         } else {
             clearTimeout(timerId);
@@ -14,7 +14,7 @@ export default function useLongPress(callback = () => { }, ms = 300) {
         return () => {
             clearTimeout(timerId);
         };
-    }, [startLogPress]);
+    });
 
     return {
         onMouseDown: () => setStartLongPress(true),

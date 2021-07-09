@@ -5,15 +5,6 @@ import Timeline from './Timeline/Timeline'
 import { getHistoryWithDuration } from './Utilities/timeHelpers';
 import "./HomePage.css";
 
-const events = [
-    { ts: "2017-09-18T14:22:46.587", text: 'Logged in' },
-    { ts: "2017-09-18T19:21:46.587", text: 'Clicked Home Page' },
-    { ts: "2017-09-18T21:20:46.587", text: 'Edited Profile' },
-    { ts: "2017-09-16T22:22:46.587", text: 'Registred' },
-    { ts: "2017-09-16T22:21:46.587", text: 'Clicked Cart' },
-    { ts: "2017-09-16T22:20:46.587", text: 'Clicked Checkout' },
-];
-
 function HomePage(props) {
     const [history, setHistory] = useState([]);
     useEffect(() => {
@@ -28,8 +19,7 @@ function HomePage(props) {
         <div className="HomePage">
             <EntryBar history={history} setHistory={setHistory} />
             <Timeline history={getHistoryWithDuration(history)} setHistory={setHistory} />
-            {/* <TagSummary history={history} /> */}
-            {/* <Timeline items={events} /> */}
+            <TagSummary history={history} />
 
         </div>
     )
